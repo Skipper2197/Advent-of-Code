@@ -1,16 +1,16 @@
-package day3;
+package aoc2020;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Main {
+public class Day3 extends AOCPuzzle {
 	
-	public static ArrayList<String> input = new ArrayList<String>();
-	
-	public static void main(String[] args) {
-		readFile("src/day3/input.txt");
-		
+	public Day3() {
+		super(3);
+	}
+
+	@Override
+	public void solvePuzzle(ArrayList<String> input) {
+		// TODO Auto-generated method stub
 		char[][] map = new char[323][31];
 		
 		for(int i = 0; i < map.length; i++) {
@@ -30,6 +30,7 @@ public class Main {
 		total *= countTrees(1, 2, map);
 		
 		System.out.println(total);
+		
 	}
 	
 	public static int countTrees(int slopeX, int slopeY, char[][] map) {
@@ -52,18 +53,4 @@ public class Main {
 		return trees;
 	}
 	
-	 public static void readFile(String fileName) {
-	        try {
-	            File inputFile = new File(fileName);
-	            Scanner myScanner = new Scanner(inputFile);
-	            while(myScanner.hasNextLine()) {
-	                String line = myScanner.nextLine();
-	                input.add(line);
-	            }
-	        } catch (Exception e) {
-	            //TODO: handle exception
-	            e.printStackTrace();
-	        }
-	    }
-
 }

@@ -1,34 +1,22 @@
-package day1;
+package aoc2020;
 
-import java.util.*;
-import java.io.*;
+import java.util.ArrayList;
 
-public class Main {
+public class Day1 extends AOCPuzzle {
 
-    public static ArrayList<Integer> input = new ArrayList<Integer>();
+	public Day1() {
+		super(1);
+	}
 
-    public static void main(String[] args) {
-        readFile("src/day1/input.txt");
-        //findSumOfTwo(input, 2020);
+	@Override
+	public void solvePuzzle(ArrayList<String> input) {
+		findSumOfTwo(input, 2020);
         findSumOfThree(input, 2020);
-    }
-
-    public static void readFile(String fileName) {
-        try {
-            File inputFile = new File(fileName);
-            Scanner myScanner = new Scanner(inputFile);
-            while(myScanner.hasNextLine()) {
-                String number = myScanner.nextLine();
-                input.add(Integer.parseInt(number));
-                //System.out.println(number);
-            }
-        } catch (Exception e) {
-            //TODO: handle exception
-            e.printStackTrace();
-        }
-    }
-    
-    public static void findSumOfTwo(ArrayList<Integer> input, int target) {
+		
+	}
+	
+    public static void findSumOfTwo(ArrayList<String> inputString, int target) {
+    	ArrayList<Integer> input = convertToInt(inputString);
     	int multOfSum = 0;
     	int startPos = 0;
     	while(startPos < input.size()) {
@@ -47,7 +35,8 @@ public class Main {
     	
     }
     
-    public static void findSumOfThree(ArrayList<Integer> input, int target) {
+    public static void findSumOfThree(ArrayList<String> inputString, int target) {
+    	ArrayList<Integer> input = convertToInt(inputString);
     	int multOfSum = 0;
     	for(int i = 0; i < input.size(); i++) {
     		for(int j = i+1; j < input.size(); j++) {
@@ -62,6 +51,18 @@ public class Main {
     	}
     	
     }
- }
+    
+    private static ArrayList<Integer> convertToInt(ArrayList<String> input){
+    	ArrayList<Integer> result = new ArrayList<Integer>();
+        for(String s : input) {
+            try {
+                result.add(Integer.parseInt(s));
+            } catch(Exception e) {
+               e.printStackTrace();
+            } 
+        }       
+        return result;
 
-
+    }
+	
+}

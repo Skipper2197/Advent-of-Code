@@ -1,17 +1,35 @@
-package day4;
+package aoc2020;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Main {
-
-	public static ArrayList<String> passports = new ArrayList<String>();
-	public static int valid = 0;
+public class Day4 extends AOCPuzzle {
 	
-	public static void main(String[] args) {
-		readFile("src/day4/input.txt");
-		//readFile("src/day4/testInput.txt");
+	public Day4( ) {
+		super(4);
+	}
+
+	@Override
+	public void solvePuzzle(ArrayList<String> input) {
+		// TODO Auto-generated method stub
+		ArrayList<String> passports = new ArrayList<String>();
+		String temp = "";
+		boolean isNotFirst = false;
+		for(String s : input) {
+			if(s.equals("")) {
+				passports.add(temp);
+				temp = "";
+				isNotFirst = false;
+			} else {
+				if(isNotFirst) {
+					temp += " " + s;
+				} else {
+					temp += s;
+					isNotFirst = true;
+				}
+				
+			}
+		}
+		int valid = 0;
 		for(String s : passports) {
 			//System.out.println(s);
 			//System.out.println();
@@ -23,7 +41,8 @@ public class Main {
 				valid++;
 			}
 		}
-		System.out.println(valid);
+		System.out.println(++valid);
+		
 	}
 	
 	public static boolean allAreValid(String[] passportParts) {
@@ -116,33 +135,5 @@ public class Main {
 		}
 		return true;
 	}
-	
-	 public static void readFile(String fileName) {
-	        try {
-	            File inputFile = new File(fileName);
-	            Scanner myScanner = new Scanner(inputFile);
-	            String passport = "";
-	            while(myScanner.hasNextLine()) {
-	                String line = myScanner.nextLine();
-	                //System.out.println(line);
-	                if(line.length() > 0) {
-	                	if(!passport.equals("")) {
-	                		passport += " " + line;
-	                	} else {
-	                		passport += line;
-	                	}
-	                	
-	                } else {
-	                	passports.add(passport);
-	                	passport = "";
-	                }
-	            }
-	            passports.add(passport);
-	            
-	        } catch (Exception e) {
-	            //TODO: handle exception
-	            e.printStackTrace();
-	        }
-	    }
-	
+
 }

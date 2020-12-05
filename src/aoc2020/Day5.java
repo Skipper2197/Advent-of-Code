@@ -1,21 +1,19 @@
-package day5;
+package aoc2020;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
-import java.util.Arrays;
 
-public class Main {
+public class Day5 extends AOCPuzzle {
 	
-	public static ArrayList<String> boardingPasses = new ArrayList<String>();
-	
-	public static ArrayList<Integer> IDs = new ArrayList<Integer>();
+	public Day5() {
+		super(5);
+	}
 
-	public static void main(String[] args) {
-		readFile("src/day5/input.txt");
-		//readFile("src/day5/testInput.txt");
+	@Override
+	public void solvePuzzle(ArrayList<String> input) {
+		// TODO Auto-generated method stub
+		ArrayList<Integer> IDs = new ArrayList<Integer>();
 		int maxID = 0;
-		for(String s : boardingPasses) {
+		for(String s : input) {
 			int ID = (getRow(s) * 8) + getCol(s);
 			IDs.add(ID);
 			if(maxID < ID) {
@@ -33,6 +31,7 @@ public class Main {
 			}
 			lastID = ID;
 		}
+		
 	}
 	
 	public static int getRow(String pass) {
@@ -62,21 +61,5 @@ public class Main {
 		//System.out.println(Integer.parseInt(binary, 2));
 		return Integer.parseInt(binary, 2);
 	}
-	
-	public static void readFile(String fileName) {
-        try {
-            File inputFile = new File(fileName);
-            Scanner myScanner = new Scanner(inputFile);
-            String passport = "";
-            while(myScanner.hasNextLine()) {
-                String line = myScanner.nextLine();
-                boardingPasses.add(line);
-            }
-            
-        } catch (Exception e) {
-            //TODO: handle exception
-            e.printStackTrace();
-        }
-    }
-	
+
 }

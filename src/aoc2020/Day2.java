@@ -1,15 +1,16 @@
-package day2;
+package aoc2020;
 
-import java.io.File;
 import java.util.ArrayList;
-import java.util.Scanner;
 
-public class Main {
+public class Day2 extends AOCPuzzle{
 	
-	public static ArrayList<String> passwords = new ArrayList<String>();
-	
-	public static void main(String[] args) {
-		readFile("src/day2/input.txt");
+	public Day2() {
+		super(2);
+	}
+
+	@Override
+	public void solvePuzzle(ArrayList<String> input) {
+		// TODO Auto-generated method stub
 		/* Part One
 		int valid = 0;
 		for(String s : passwords) {
@@ -33,7 +34,7 @@ public class Main {
 		 */
 		
 		int valid = 0;
-		for(String s : passwords) {
+		for(String s : input) {
 			String[] stuff = s.split(" ");
 			String[] minMax = stuff[0].split("-");
 			int pos1 = Integer.parseInt(minMax[0]);
@@ -45,21 +46,7 @@ public class Main {
 			}
 		}
 		System.out.println(valid);
+		
 	}
-
-    public static void readFile(String fileName) {
-        try {
-            File inputFile = new File(fileName);
-            Scanner myScanner = new Scanner(inputFile);
-            while(myScanner.hasNextLine()) {
-                String password = myScanner.nextLine();
-                passwords.add(password);
-            }
-        } catch (Exception e) {
-            //TODO: handle exception
-            e.printStackTrace();
-        }
-    }
-
 
 }
